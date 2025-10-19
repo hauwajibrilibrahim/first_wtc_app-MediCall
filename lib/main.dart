@@ -1,5 +1,7 @@
 import 'package:first_app/bottom_navigation.dart';
-//import 'package:first_app/home_page.dart';
+import 'package:first_app/pages/login_page.dart';
+import 'package:first_app/pages/onboarding_page.dart';
+import 'package:first_app/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,11 +14,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Save a Life',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const BottomNavigation()
+      debugShowCheckedModeBanner: false,
+      routes: {
+        '/': (context) => OnboardingPage(),
+        '/home': (context) => BottomNavigation(),
+        '/login':(context) => LoginPage(),
+        '/signup': (context) => SignupPage()
+      },
+      initialRoute: '/',
     );
   }
 }
