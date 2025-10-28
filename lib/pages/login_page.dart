@@ -113,8 +113,8 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ],
                           ),
-                          GestureDetector(
-                            onTap: () {
+                          TextButton(
+                            onPressed: () {
                               Navigator.pushReplacementNamed(context, '/forgot');
                             },
                             child: Text(
