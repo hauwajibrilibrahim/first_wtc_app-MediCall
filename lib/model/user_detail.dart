@@ -1,5 +1,5 @@
 class UserDetail {
-  UserDetail({
+  const UserDetail({
     required this.name,
     required this.profilePicture,
     required this.email,
