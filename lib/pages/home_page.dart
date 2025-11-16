@@ -1,4 +1,4 @@
-import 'package:first_app/widgets/contact_item.dart';
+import 'package:first_app/widgets/hospital_list.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -46,27 +46,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildListView() {
     return ListView(
-      children: [
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),
-        ContactItem(),                                                    
-      ],
+      children: [HospitalList()],                                                
     );
   }
 

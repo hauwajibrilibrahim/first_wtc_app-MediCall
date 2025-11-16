@@ -1,9 +1,11 @@
+import 'package:first_app/provider/user_notifier.dart';
 import 'package:first_app/widgets/custom_button.dart';
 import 'package:first_app/widgets/custom_textfield.dart';
 import 'package:first_app/widgets/password_textfield.dart';
 import 'package:first_app/widgets/social_signin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -16,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   bool _isChecked = false;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  
+
   @override
   void dispose() {
     emailController.dispose();
@@ -25,6 +27,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    var userNotifier = Provider.of<UserNotifier>(context);
     final screenHeight = MediaQuery.of(context).size.height;
     //final screenWidth = MediaQuery.of(context).size.width;
 
@@ -83,9 +86,15 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       const SizedBox(height: 32),
-                      CustomTextField(label: 'Email', textEditingController: emailController,),
+                      CustomTextField(
+                        label: 'Email',
+                        textEditingController: emailController,
+                      ),
                       const SizedBox(height: 16),
-                      PasswordTextField(label: 'Password', textEditingController: passwordController,),
+                      PasswordTextField(
+                        label: 'Password',
+                        textEditingController: passwordController,
+                      ),
                       const SizedBox(height: 16),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -115,7 +124,10 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           TextButton(
                             onPressed: () {
-                              Navigator.pushReplacementNamed(context, '/forgot');
+                              Navigator.pushReplacementNamed(
+                                context,
+                                '/forgot',
+                              );
                             },
                             child: Text(
                               "Forget password?",
@@ -135,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: CustomButton(
                           text: 'Sign in',
                           onPressed: () {
-                            if (emailController.text != 'jiddah@gmail.com') {
+                            /*if (emailController.text != 'jiddah@gmail.com') {
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Not a valid email. Try again')));
                               return;
                             }
@@ -143,7 +155,12 @@ class _LoginPageState extends State<LoginPage> {
                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Not a valid password. Try again')));
                               return;
                             }
-                            Navigator.of(context).pushReplacementNamed('/home');
+                            Navigator.of(context).pushReplacementNamed('/home');*/
+                            userNotifier.login(
+                              context,
+                              emailController.text,
+                              passwordController.text,
+                            );
                           },
                         ),
                       ),
