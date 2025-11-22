@@ -96,7 +96,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         Divider(),
         ListTile(
-          title: Text("Payment Mwthods", style: TextStyle(fontSize: 16)),
+          title: Text("Payment Methods", style: TextStyle(fontSize: 16)),
           trailing: Icon(Icons.arrow_forward_ios_outlined, size: 16),
         ),
         Divider(),
