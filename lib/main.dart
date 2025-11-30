@@ -17,7 +17,13 @@ import 'package:google_sign_in/google_sign_in.dart';
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
+  await GoogleSignIn.instance.initialize(
+    clientId: Platform.isAndroid
+        ? "193707534280-jo4u2n3948l5r4abams05urd92fqjcbv.apps.googleusercontent.com"
+        : "193707534280-beh7ekjs577gvb21phbdhmrf4ih30sib.apps.googleusercontent.com",
+    serverClientId: "193707534280-161j9kn66ua5gifu4vgi9uuohflorm8f.apps.googleusercontent.com",  
+    
+  );
   runApp(const MyApp());
 }
 
