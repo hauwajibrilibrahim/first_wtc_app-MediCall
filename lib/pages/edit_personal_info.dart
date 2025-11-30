@@ -71,7 +71,7 @@ class _EditPersonalInfoPageState extends State<EditPersonalInfoPage> {
     var provider = Provider.of<UserNotifier>(context, listen: false);
     var user = provider.loggedInUser!;
 
-    String newImage = user.profilePicture;
+    String? newImage = user.profilePicture;
 
     if (_imageFile != null) {
       String? uploaded = await uploadImage(_imageFile!, user.email);
@@ -116,10 +116,10 @@ class _EditPersonalInfoPageState extends State<EditPersonalInfoPage> {
                     radius: 50,
                     backgroundImage: _imageFile != null
                         ? FileImage(_imageFile!)
-                        : (user.profilePicture.isNotEmpty
-                              ? NetworkImage(user.profilePicture)
+                        : ((user.profilePicture != null && user.profilePicture?.isNotEmpty == true)
+                              ? NetworkImage(user.profilePicture!)
                               : null),
-                    child: _imageFile == null && user.profilePicture.isEmpty
+                    child: _imageFile == null && (user.profilePicture?.isEmpty ?? true)
                         ? Icon(Icons.camera_alt, size: 40)
                         : null,
                   ),
